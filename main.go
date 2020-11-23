@@ -5,5 +5,6 @@ import (
 )
 
 func main() {
-	framework.Init()
+	f := framework.Init()
+	f.Storage.Save()
 }

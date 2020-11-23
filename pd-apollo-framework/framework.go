@@ -10,7 +10,11 @@ type Storage interface {
 	Save()
 }
 
-func Init() {
+type Framework struct {
+	Storage Storage
+}
+
+func Init() *Framework {
 	fmt.Println("Apollo framwork 0.0.1")
 	storagePlug, err := plugin.Open("./storage.so")
 	if err != nil {
@@ -31,5 +35,8 @@ func Init() {
 		os.Exit(1)
 	}
 	storage := storageFactory()
-	storage.Save()
+
+	framework := Framework{Storage: storage}
+
+	return &framework
 }
