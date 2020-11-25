@@ -7,4 +7,5 @@ import (
 func main() {
 	f := framework.Init()
 	f.Storage.Save()
+	f.Receiver.Start()
 }
